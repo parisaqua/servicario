@@ -1,26 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import './Home.css';
 
-
 const Home = () => {
     
     const [message, setMessage] = useState('Super message à moi !')
-
-    // const messageState = useState('Great messge.')
-    // const message = messageState[0]
-    // const setMessage = messageState[1]
-    
+    const [count, setCount] = useState(0)
+    const [test, setTest] = useState(0)
     useEffect(() => {
-        debugger
         setTimeout(() => {
             setMessage('Message updated !')
         }, 1500)
     }, [])
 
+    const increment = () => {
+        //setTest(test + 1)
+        setCount(count + 1)
+    }
+
+    const decrement = () => {
+        setCount(count - 1)
+    }
+
     return (
         <div className='container'>
             <h1>I am home page.</h1>
             <p>{message}</p>
+            <button onClick={increment}>Incrément</button>
+            <div className="counter">{count}</div>
+            <button onClick={decrement}>Decrement</button>
         </div>
     )
 }
